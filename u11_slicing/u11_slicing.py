@@ -29,29 +29,36 @@ Error Test: Input: "johnDoe", Output: False
 Error Test: Input: "John Doe", Output: False
 Boundary Test: Input: "John", Output: False
 '''
+
+
+def is_valid_username(username):
+    if len(username) >= 6:
+        length = True
+    else:
+        length = False
+
+    if username.find(" ") == -1:
+        space = True
+    else:
+        space = False
+
+    if username[0].isupper():
+        first_upper = True
+    else:
+        first_upper = False
+
+    last_lower = True
+    for i in username[1:]:
+        if not i.islower():
+            last_lower = False
+
+    if length and space and first_upper and last_lower:
+        print("Output: True")
+        return True
+    else:
+        print("Output: False")
+        return False
+    
+
 username = input("Enter your username: ")
-
-if len(username) >= 6:
-    length = True
-else:
-    length = False
-
-if username.find(" ") == -1:
-    space = True
-else:
-    space = False
-
-if username[0].isupper():
-    first_upper = True
-else:
-    first_upper = False
-
-last_lower = True
-for i in username[1:]:
-    if not i.islower():
-        last_lower = False
-
-if length and space and first_upper and last_lower:
-    print("Output: True")
-else:
-    print("Output: False")
+print(is_valid_username(username))
