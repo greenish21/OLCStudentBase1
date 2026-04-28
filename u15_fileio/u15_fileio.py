@@ -200,6 +200,7 @@ print(f"{len(pass_list)} is the number of poeple who passed")
 #
 # Write your code below.
 # ---------------------------------------------------------
+'''
 with open("q6_names.txt", "r") as file:
     content = file.readlines()
 with open("proper_names.txt", "a") as file2:    
@@ -207,7 +208,7 @@ with open("proper_names.txt", "a") as file2:
         name = name.strip()
         name = name[0:1].upper() + name[1:]
         file2.write(f"{name}\n")
-
+'''
 # ---------------------------------------------------------
 # Question 7
 # Filtering data
@@ -230,17 +231,17 @@ with open("proper_names.txt", "a") as file2:
 #
 # Write your code below.
 # ---------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
+'''
+with open("q7_temperatures.txt", "r") as file:
+    content = file.readlines()
+with open("hot_days.txt", "w") as file1:
+    for temp in content:
+        if int(temp[:2]) > 30:
+            file1.write(temp)
+with open("hot_days.txt", "r") as file2:
+    content1 = file2.readlines()
+    print(f"There are {len(content1)} hot days")       
+'''                        
 
 # ---------------------------------------------------------
 # Question 8
@@ -271,16 +272,21 @@ with open("proper_names.txt", "a") as file2:
 #
 # Write your code below.
 # ---------------------------------------------------------
+'''
+with open("q8_animal_names.txt", "r") as file_names:
+    content_names = file_names.readline()
+with open("q8_animal_sounds.txt", "r") as file_sounds:
+    content_sounds = file_sounds.readline()
+split_names = content_names.split(",")
+split_sounds = content_sounds.split(",")
 
-
-
-
-
-
-
-
-
-
+count = 0
+animal_dict = {}
+while count < len(split_names):
+    animal_dict[split_names[count]] = split_sounds[count]
+    count += 1
+print(animal_dict)
+'''
 
 # ---------------------------------------------------------
 # Question 9
@@ -315,18 +321,31 @@ with open("proper_names.txt", "a") as file2:
 
 # Write your code below.
 # ---------------------------------------------------------
+'''
+with open("q9_scores.txt", "r") as file:
+    content = file.readlines()
+print(content)
 
+valid = []
+invalid = []
 
-
-
-
-
-
-
-
-
-
-
+with open("invalid_scores.txt", "w") as file1:
+    for score in content:
+        score = score.strip()
+        
+        if score.isdigit():
+            num = int(score)
+            if 0 <= num <= 100:
+                valid.append(num)
+            else:
+                invalid.append(score)
+                file1.write(score + "\n")
+        else:
+            invalid.append(score)
+            file1.write(score + "\n")
+print(valid)
+print(invalid)
+'''
 
 # ---------------------------------------------------------
 # Question 10
@@ -362,14 +381,29 @@ with open("proper_names.txt", "a") as file2:
 # Books: 15
 # Write your code below.
 # ---------------------------------------------------------
+'''
+with open("q10_expenses.txt", "r") as file:
+    content = file.readlines()
 
+list_split = []
+for i in content:
+    i = i.strip().split(",")
+    list_split.append(i)
 
+expense = {}
+for item in list_split:
+    if item[0] not in expense:
+        expense[item[0]] = int(item[1])
 
-
-
-
-
-
+    else:
+        expense[item[0]] = expense[item[0]] + int(item[1])
+total = sum(expense.values())
+with open("expense_report.txt", "w") as f:
+    f.write("Total Spending: " + str(total) + "\n")
+    f.write("Transport: " + str(expense.get("Transport", 0)) + "\n")
+    f.write("Food: " + str(expense.get("Food", 0)) + "\n")
+    f.write("Books: " + str(expense.get("Books", 0)) + "\n")
+'''
 # ---------------------------------------------------------
 # Question 11 [25 marks]
 #
