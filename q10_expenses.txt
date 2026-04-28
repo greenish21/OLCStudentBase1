@@ -1,0 +1,6 @@
+Transport,12
+Food,8
+Books,15
+Transport,10
+Food,6
+Food,9
