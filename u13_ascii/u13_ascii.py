@@ -151,13 +151,3 @@ print(f"Your random password is {strpassword}")'''
 ###########################################################
 
 
-def encrypt(char, key):
-    # get the ord of char
-
-    # new key = current ord + key 
-
-    # get back the char chr(new key)
-
-    # ascii offset to zero
-
-    # modulus to start from beginning
