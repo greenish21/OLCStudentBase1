@@ -209,6 +209,12 @@ def create_booking_reference(parent_name,workshop_code):
     workshop_code = workshop_code.upper()
     return parents + workshop_code + booking_number
 
+parents_name = input("Enter the parent's name: ")
+while True:
+    workshop_code = input("Enter your workshop code: ").upper()
+    if valid_workshop_code(workshop_code) == True:
+        break
+num_students = input("Enter the number of students: ")
 
 
 
