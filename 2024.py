@@ -24,7 +24,7 @@ def prime(number):
         return "prime"
     else:
         return "not prime"
-
+# Q12
 while True:
     number = int(input("Enter a whole number: "))
     if type(number) == int:
