@@ -1,6 +1,5 @@
-Transport,12
-Food,8
-Books,15
-Transport,10
-Food,6
-Food,9
+Pen,12,1.5
+Book,5,4.8
+Eraser,20,0.6
+Pencil,10,1.2
+Ruler,3,2.5

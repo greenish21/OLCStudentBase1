@@ -273,21 +273,25 @@ with open("hot_days.txt", "r") as file2:
 # Write your code below.
 # ---------------------------------------------------------
 '''
-with open("q8_animal_names.txt", "r") as file_names:
-    content_names = file_names.readline()
-with open("q8_animal_sounds.txt", "r") as file_sounds:
-    content_sounds = file_sounds.readline()
-split_names = content_names.split(",")
-split_sounds = content_sounds.split(",")
-
+with open("q8_animal_names.txt","r") as file1:
+    contents_names = file1.read()
+    names_split = contents_names.split(",")
+with open("q8_animal_sounds.txt","r") as file2:
+    contents_sounds = file2.read()
+    sounds_split = contents_sounds.split(",")
 count = 0
-animal_dict = {}
-while count < len(split_names):
-    animal_dict[split_names[count]] = split_sounds[count]
-    count += 1
-print(animal_dict)
-'''
+animals = {}
 
+for i in range(len(names_split)):
+    animals[names_split[i]] = sounds_split[i]
+
+for name in names_split:
+    animals[name] = sounds_split[count]
+    count += 1
+print(names_split)
+print(sounds_split)
+print(animals)
+'''
 # ---------------------------------------------------------
 # Question 9
 # Validation and error reporting
@@ -322,31 +326,25 @@ print(animal_dict)
 # Write your code below.
 # ---------------------------------------------------------
 '''
-with open("q9_scores.txt", "r") as file:
-    content = file.readlines()
-print(content)
-
+with open("q9_scores.txt","r") as file:
+    contents = file.readlines()
+score_list = []
+for score in contents:
+    score_list.append(score.strip('\n'))
 valid = []
 invalid = []
-
-with open("invalid_scores.txt", "w") as file1:
-    for score in content:
-        score = score.strip()
-        
-        if score.isdigit():
-            num = int(score)
-            if 0 <= num <= 100:
-                valid.append(num)
-            else:
-                invalid.append(score)
-                file1.write(score + "\n")
-        else:
-            invalid.append(score)
-            file1.write(score + "\n")
+for score in score_list:
+    if score.isdigit() == True and 0<=int(score)<=100:
+        valid.append(score)
+    else:
+        invalid.append(score)
 print(valid)
 print(invalid)
+  
+with open("invalid_scores.txt","w") as output:
+    for i in invalid: 
+        output.write(i+"\n")
 '''
-
 # ---------------------------------------------------------
 # Question 10
 # Summary report generation
@@ -438,19 +436,19 @@ with open("expense_report.txt", "w") as f:
 #     - unit price as a float
 # Write your code below.
 # ---------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
+def read_sales():
+    with open("q11_sales.txt","r") as file1:
+        contents = file1.readlines()
+    contents_strip = []
+    for i in contents:
+        contents_strip.append(i.strip("\n"))
+    foutput = []
+    for data in contents_strip:
+        temp_list = data.split(",")
+        output = [temp_list[0], int(temp_list[1]), float(temp_list[2]) ]
+        foutput.append(output)
+    return foutput
+print(read_sales())
 
 # ---------------------------------------------------------
 # (b) calculate_total(record)                              [4]
