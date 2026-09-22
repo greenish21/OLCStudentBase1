@@ -448,8 +448,6 @@ def read_sales():
         output = [temp_list[0], int(temp_list[1]), float(temp_list[2]) ]
         foutput.append(output)
     return foutput
-print(read_sales())
-
 # ---------------------------------------------------------
 # (b) calculate_total(record)                              [4]
 #     This function receives one sales record.
@@ -457,22 +455,11 @@ print(read_sales())
 #     total value = quantity x unit price
 # Write your code below.
 # ---------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def calculate_total(record):
+    quantity = record[1]
+    unit_price = record[2]
+    total_value = quantity * unit_price
+    return total_value
 # ---------------------------------------------------------
 # (c) write_report(records)                                [9]
 #     This function receives the nested list of sales records.
@@ -493,18 +480,21 @@ print(read_sales())
 #
 # Write your code below.
 # ---------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
+def write_report(records):
+    num_list = []
+    with open("sales_report.txt","w") as file:
+        for item in records:
+            amount = calculate_total(item)
+            file.write(f"{item[0]}: {amount}\n")
+            num_list.append(amount)
+        grand_total = sum(num_list)
+        file.write("Grand Total: " + str(grand_total) + "\n")
+        best_amt = max(num_list)
+        for item in records:
+            if calculate_total(item) == best_amt:
+                best_selling = item[0]
+        file.write("Best Selling Item: " + best_selling)
+    return num_list
 # ---------------------------------------------------------
 # (d) Main program                                         [3]
 #     The main program should:
@@ -512,7 +502,9 @@ print(read_sales())
 #     - call write_report(records)
 #     - display the message:
 #       Report created successfully
-#
+records = read_sales()
+write_report(records)
+print("Report created successfully")
 # (e) Comments and meaningful variable names              [4]
 #
 # Write your code below.

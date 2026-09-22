@@ -1,0 +1,7 @@
+Pen: 18.0
+Book: 24.0
+Eraser: 12.0
+Pencil: 12.0
+Ruler: 7.5
+Grand Total: 73.5
+Best Selling Item: Book
